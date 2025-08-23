@@ -358,15 +358,13 @@ QPushButton#buttonEnable
 	margin: 0px;
 	border: 0.15em solid @border@;
 	background-color: white;
-	width: 4.54em;	/* 4.57 / 64px at 96dpi */
-	height: 4.54em;	/* 5 / 70px at 96dpi */
+	width: 4em;	/* 4.57 / 64px at 96dpi */
+	height: 4em;	/* 5 / 70px at 96dpi */
 	/*background-color: transparent;
 	image: url(@themeImages@/power.png);*/
 }
 QPushButton#buttonEnable:hover
 {
-	width: 4.54em;	/* 4.57 / 64px at 96dpi */
-	height: 4.54em;	/* 5 / 70px at 96dpi */
 	border-color: @buttonHoverBorder@;
 	background-color: @buttonHoverBackground@;
 	/*background-color: transparent;
@@ -374,8 +372,6 @@ QPushButton#buttonEnable:hover
 }
 QPushButton#buttonEnable:pressed
 {
-	width: 4.54em;	/* 4.57 / 64px at 96dpi */
-	height: 4.54em;	/* 5 / 70px at 96dpi */
 	border-color: @buttonPressedBorder@;
 	background-color: @buttonPressedBackground@;
 	/*background-color: transparent;
