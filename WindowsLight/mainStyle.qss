@@ -3,38 +3,72 @@
 
 // Common Classic-theme images are loaded from the internal resource (:/), and the theme-specific images are loaded from the user data folder (~/)
 @images@ = :/images/Classic
-@themeImages@ = ~/themes/ClassicBlue
+@themeImages@ = ~/themes/WindowsLight
 
 // Background colors
-@background@ = hsv(200, 35, 50)
-@backgroundAlt@ = hsv(200, 35, 40)
-@backgroundFrame@ = hsv(200, 35, 30)
-@backgroundStatusBar@ = hsv(200, 35, 80)
+@background@ = #F0F0F0
+@backgroundAlt@ = #F7F7F7
+@backgroundFrame@ = #F7F7F7
+@backgroundStatusBar@ = #ddd
 
 // Borders
-@border@ = black
-@borderDisabled@ = #444
-@borderLight@ = #555
-@borderLighter@ = #888
+@border@ = #ADADAD
+@borderDisabled@ = #BFBFBF
+@borderLight@ = #ADADAD
+@borderLighter@ = #ADADAD
 
 // Text
-@text@ = white
-@textDark@ = #b1b1b1
-@textSelected@ = black
-@textDisabled@ = #404040
+@text@ = black
+@textDark@ = #555
+@textSelected@ = white
+@textDisabled@ = #aaa
 
 // Highlight color
-@highlightGradient@ = QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop: 0 @highlight@, stop: 1 @highlightDark@)
+@highlightGradient@ = #0078D7
+@highlightColor@ = #0078D7
+@highlightCheckboxBorder@ = #0179D7
 @highlight@ = hsv(@highlightHueSat@, 255)
 @highlightDark@ = hsv(@highlightHueSat@, 208)
 @highlightDarker@ = hsv(@highlightHueSat@, 153)
-@highlightHueSat@ = 195,255
+@highlightHueSat@ = 206,255
 
 // Button/combo/menu gradients
-@buttonGradient@ = QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop: 0 hsv(@buttonHueSat@, 105), stop: 0.1 hsv(@buttonHueSat@, 100), stop: 0.5 hsv(@buttonHueSat@, 78), stop: 0.9 hsv(@buttonHueSat@, 74), stop: 1 hsv(@buttonHueSat@, 70))
-@buttonGradientChecked@ = QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop: 0 hsv(@buttonHueSat@, 86), stop: 0.1 hsv(@buttonHueSat@, 82), stop: 0.5 hsv(@buttonHueSat@, 60), stop: 0.9 hsv(@buttonHueSat@, 54), stop: 1 hsv(@buttonHueSat@, 48))
-@buttonGradientPressed@ = QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop: 0 hsv(@buttonHueSat@, 60), stop: 0.1 hsv(@buttonHueSat@, 66), stop: 0.6 hsv(@buttonHueSat@, 44), stop: 0.9 hsv(@buttonHueSat@, 38), stop: 1 hsv(@buttonHueSat@, 32))
-@buttonHueSat@ = 200,40
+@buttonGradient@ = #E1E1E1
+@buttonGradientChecked@ = white
+@buttonGradientPressed@ = #CCE8FF
+@buttonHueSat@ = 206,40
+
+@buttonHoverBorder@ = #0078D7
+@buttonHoverBackground@ = #E5F1FB
+@buttonPressedBorder@ = #005499
+@buttonPressedBackground@ = #CCE4F7
+
+@comboBox@ = #E1E1E1
+@comboBoxItemsBackground@ = white
+@textField@ = white
+@select@ = #007AD9
+
+@sliderBackground@ = #E7EAEA
+@sliderBorder@ = #D6D6D6
+
+@scrollbarBackground@ = #F0F0F0
+@scrollbarForeground@ = #606060
+@scrollbarHandle@ = #CDCDCD
+
+@menuBarBackground@ = white
+@menuBarSelectedBackground@ = #E5F3FF
+@menuBarSelectedBorder@ = #CCE8FF
+@menuBarPressedBackground@ = #CCE8FF
+@menuBarPressedBorder@ = #99D1FF
+
+@menuBorder@ = #CCCCCC
+@menuSeparator@ = #D7D7D7
+@menuBackground@ = #F0F0F0
+@menuSelectedColor@ = black
+@menuSelectedBackground@ = #91C9F7
+
+@statusBorder@ = #696969;
+@checkboxBackground@ = white
 
 </variables>
 
@@ -124,13 +158,13 @@ QWidget:item:selected
 QStatusBar
 {
 	background-color: @backgroundStatusBar@;
-	border: 0px solid black;
+	border: 0px solid @statusBorder@;
 	border-top-width: 1px;
 }
 QMenuBar
 {
-	background-color: @buttonGradient@;
-	border: 0px solid black;
+	background-color: @menuBarBackground@;
+	border: 0px solid @statusBorder@;
 	border-bottom-width: 1px;
 }
 QMenuBar::item
@@ -140,39 +174,40 @@ QMenuBar::item
 }
 QMenuBar::item:selected
 {
-	background: transparent;
-	border: 1px solid @highlight@;
+	background: @menuBarSelectedBackground@;
+	border: 1px solid @menuBarSelectedBorder@;
 }
 QMenuBar::item:pressed
 {
-	border: 1px solid @border@;
-	background-color: @buttonGradientPressed@;
+	border: 1px solid @menuBarPressedBorder@;
+	background-color: @menuBarPressedBackground@;
 }
 QMenu
 {
-	border: 1px solid @borderLighter@;
+	border: 1px solid @menuBorder@;
 }
 QMenu::right-arrow
 {
-	width: 0.5em;
-	height: 0.5em;
-	image: url(@images@/arrow_right.png);
+	width: 0.7em;
+	height: 0.7em;
+	image: url(@themeImages@/arrow_menu.png);
 	padding-right: 0.2em;
 }
 QMenu::separator
 {
-	background-color: #777777;
+	background-color: @menuSeparator@;
 	height: 1px;
 	margin: 0.1em 0.8em;
 }
 QMenu::item
 {
 	padding: 0.2em 1.4em;
-	background-color: @backgroundFrame@;
+	background-color: @menuBackground@;
 }
 QMenu::item:selected
 {
-	color: @textSelected@;
+	color: @menuSelectedColor@;
+	background: @menuSelectedBackground@;
 }
 QMenu::indicator:checked
 {
@@ -199,7 +234,7 @@ QToolButton#buttonDistortion
 {
 	border: 0px solid black;
 	background-color: transparent;
-	image: url(@images@/section.png);
+	image: url(@themeImages@/section.png);
 	padding: 0px;
 }
 QToolButton#buttonEditPreset:hover,
@@ -321,27 +356,35 @@ QPushButton#buttonEnable
 	outline: 0;
 	padding: 0px;
 	margin: 0px;
-	border: none;
-	width: 4.57em;	/* 64px at 96dpi */
-	height: 5em;	/* 70px at 96dpi */
-	background-color: transparent;
-	image: url(@themeImages@/power.png);
+	border: 0.15em solid @border@;
+	background-color: white;
+	width: 4.54em;	/* 4.57 / 64px at 96dpi */
+	height: 4.54em;	/* 5 / 70px at 96dpi */
+	/*background-color: transparent;
+	image: url(@themeImages@/power.png);*/
 }
 QPushButton#buttonEnable:hover
 {
-	width: 4.57em;	/* 64px at 96dpi */
-	height: 5em;	/* 70px at 96dpi */
-	background-color: transparent;
-	image: url(@themeImages@/power_hover.png);
+	width: 4.54em;	/* 4.57 / 64px at 96dpi */
+	height: 4.54em;	/* 5 / 70px at 96dpi */
+	border-color: @buttonHoverBorder@;
+	background-color: @buttonHoverBackground@;
+	/*background-color: transparent;
+	image: url(@themeImages@/power_hover.png);*/
 }
-QPushButton#buttonEnable:checked,
 QPushButton#buttonEnable:pressed
 {
-	width: 4.57em;	/* 64px at 96dpi */
-	height: 5em;	/* 70px at 96dpi */
-	background-color: transparent;
-	image: url(@themeImages@/power_pressed.png);
+	width: 4.54em;	/* 4.57 / 64px at 96dpi */
+	height: 4.54em;	/* 5 / 70px at 96dpi */
+	border-color: @buttonPressedBorder@;
+	background-color: @buttonPressedBackground@;
+	/*background-color: transparent;
+	image: url(@themeImages@/power_pressed.png);*/
 }
+QPushButton#buttonEnable:checked {
+	image: url(@themeImages@/checkbox-big.png);
+}
+
 QPushButton
 {
 	color: @text@;
@@ -382,7 +425,7 @@ QComboBox#comboBoxPresets
 }
 QComboBox
 {
-	background-color: @buttonGradient@;
+	background-color: @comboBox@;
 	border: 1px solid @border@;
 	border-radius: 0.2em;
 	padding: 0.1em 0em 0.1em 0.7em;
@@ -408,7 +451,7 @@ QComboBox:on
 QComboBox QAbstractItemView
 {
 	border: 1px solid @borderLighter@;
-	background-color: black;
+	background-color: @comboBoxItemsBackground@;
 }
 QComboBox#comboBoxPresets QAbstractItemView
 {
@@ -451,15 +494,15 @@ QComboBox::down-arrow:on
 QScrollBar:horizontal
 {
 	border: 1px solid #353535;
-	background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0.0 #000, stop: 0.2 #111, stop: 1 #222);
+	background: @scrollbarBackground@;
 	height: 1.15em;
 	margin: 0em 1.23em;
 }
 QScrollBar::handle:horizontal
 {
-	background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 @highlightDark@, stop: 0.5 @highlight@, stop: 1 @highlightDark@);
+	background: @scrollbarHandle@;
 	min-height: 1.54em;
-	border-radius: 0.1em;
+	border-radius: 0em;
 }
 QScrollBar:horizontal:disabled,
 QScrollBar::handle:horizontal:disabled,
@@ -511,10 +554,10 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
 }
 QScrollBar:vertical
 {
-	background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0.0 #000, stop: 0.2 #111, stop: 1 #222);
+	background: @scrollbarBackground@;
 	width: 1.15em;
 	margin: 1.23em 0em;	
-	border: 1px solid @border@;
+	border: 0px solid @border@;
 }
 QScrollBar:vertical:disabled,
 QScrollBar::handle:vertical:disabled,
@@ -526,25 +569,25 @@ QScrollBar::sub-line:vertical:disabled
 }
 QScrollBar::handle:vertical
 {
-	background: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 @highlightDark@, stop: 0.5 @highlight@, stop: 1 @highlightDark@);
+	background: @scrollbarHandle@;
 	min-height: 1.54em;
-	border-radius: 0.1em;
+	border-radius: 0em;
 }
 QScrollBar::add-line:vertical
 {
-	border: 1px solid @border@;
-	border-radius: 0.1em;
-	background: @highlightGradient@;
-	height: 1.08em;
+	border: 0px solid @border@;
+	border-radius: 0em;
+	background: transparent;
+	height: 1em;
 	subcontrol-position: bottom;
 	subcontrol-origin: margin;
 }
 QScrollBar::sub-line:vertical
 {
-	border: 1px solid @border@;
-	border-radius: 0.1em;
-	background: @highlightGradient@;
-	height: 1.08em;
+	border: 0px solid @border@;
+	border-radius: 0em;
+	background: transparent;
+	height: 1em;
 	subcontrol-position: top;
 	subcontrol-origin: margin;
 }
@@ -552,19 +595,19 @@ QScrollBar::down-arrow:vertical
 {
 	border: none;
 	background: transparent;
-	image: url(@images@/arrow_down.png);
+	image: url(@themeImages@/scrollbar_down.png);
 	width: 0.75em;
 	height: 0.75em;
-	padding-top: 0.4em;
+	padding-top: 0em;
 }
 QScrollBar::up-arrow:vertical
 {
 	border: none;
 	background: transparent;
-	image: url(@images@/arrow_up.png);
+	image: url(@themeImages@/scrollbar_up.png);
 	width: 0.75em;
 	height: 0.75em;
-	padding-bottom: 0.4em;
+	padding-bottom: 0em;
 }
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
 {
@@ -584,7 +627,7 @@ QTextEdit
 QPlainTextEdit
 {
 	border: 1px solid @borderLight@;
-	background-color: black;
+	background-color: @textField@;
 	padding-left: 0.1em;
 }
 
@@ -731,7 +774,7 @@ QCheckBox::indicator:disabled, QGroupBox::indicator:disabled, QRadioButton::indi
 }
 QCheckBox::indicator, QGroupBox::indicator
 {
-	background-color: black;
+	background-color: @checkboxBackground@;
 	border: 1px solid @borderLighter@;
 	width: 0.75em;
 	height: 0.75em;
@@ -739,7 +782,7 @@ QCheckBox::indicator, QGroupBox::indicator
 
 QSpinBox,QDoubleSpinBox
 {
-	background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop: 0.5 black, stop: 1 #222);
+	background-color: @textField@;
 	border: 1px solid @borderLighter@;
 	border-radius: 0.2em;
 	padding: 0.0em 0.16em;
@@ -791,7 +834,7 @@ QSpinBox::down-button:pressed,QDoubleSpinBox::down-button:pressed
 
 QLineEdit
 {
-	background-color: QLinearGradient(x1:0, y1:0.5, x2:0, y2:1, stop: 1 #222, stop: 0 black);
+	background-color: @textField@;
 	padding: 0.1em;
 	border: 1px solid @borderLighter@;
 	border-radius: 0.2em;
@@ -823,7 +866,7 @@ QPrecisionSlider::sub-page:horizontal:disabled
 }
 QPrecisionSlider::add-page:horizontal
 {
-	background-color: black;
+	background-color: @sliderBackground@;
 	border: 1px solid @borderLighter@;
 	height: 0.3em;
 	border-radius: 0px;
@@ -837,13 +880,13 @@ QPrecisionSlider::add-page:horizontal:disabled
 }
 QPrecisionSlider::handle:horizontal
 {
-	background-color: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 hsv(@buttonHueSat@, 77), stop: 0.2 hsv(@buttonHueSat@, 116), stop: 0.5 hsv(@buttonHueSat@, 132), stop: 0.8 hsv(@buttonHueSat@, 116), stop: 1 hsv(@buttonHueSat@, 77));
-	border-width: 1px;
+	background-color: @select@;
+	border-width: 0px;
 	border-style: solid;
 	border-color: black;
 	border-top-color: white;
 	border-left-color: white;
-    border-radius: 0.4em;
+    border-radius: 0em;
 	width: 0.9em;
 	margin-top:-0.6em;
 	margin-bottom:-0.6em;
