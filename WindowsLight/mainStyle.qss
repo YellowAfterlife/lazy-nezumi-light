@@ -9,7 +9,6 @@
 @background@ = #F0F0F0
 @backgroundAlt@ = #F7F7F7
 @backgroundFrame@ = #F7F7F7
-@backgroundStatusBar@ = #ddd
 
 // Borders
 @border@ = #ADADAD
@@ -55,11 +54,12 @@
 @scrollbarForeground@ = #606060
 @scrollbarHandle@ = #CDCDCD
 
-@menuBarBackground@ = white
+@menuBarBackground@ = #f9f9f9
 @menuBarSelectedBackground@ = #E5F3FF
 @menuBarSelectedBorder@ = #CCE8FF
 @menuBarPressedBackground@ = #CCE8FF
 @menuBarPressedBorder@ = #99D1FF
+@menuBarBorder@ = #696969;
 
 @menuBorder@ = #CCCCCC
 @menuSeparator@ = #D7D7D7
@@ -67,16 +67,22 @@
 @menuSelectedColor@ = black
 @menuSelectedBackground@ = #91C9F7
 
-@statusBorder@ = #696969;
+@statusBarBorder@ = #ADADAD
+@statusBarBackground@ = #F0F0F0
+
 @checkboxBackground@ = white
+
+@tooltipBackground@ = white
+@tooltipColor@ = black
+@tooltipBorder@ = black
 
 </variables>
 
 QToolTip
 {
-	border: 1px solid black;
-	background-color: @highlight@;
-	color: black;
+	border: 1px solid @tooltipBorder@;
+	background-color: @tooltipBackground@;
+	color: @tooltipColor@;
 }
 QWidget
 {
@@ -157,14 +163,14 @@ QWidget:item:selected
 }
 QStatusBar
 {
-	background-color: @backgroundStatusBar@;
-	border: 0px solid @statusBorder@;
+	background-color: @statusBarBackground@;
+	border: 0px solid @statusBarBorder@;
 	border-top-width: 1px;
 }
 QMenuBar
 {
 	background-color: @menuBarBackground@;
-	border: 0px solid @statusBorder@;
+	border: 0px solid @menuBarBorder@;
 	border-bottom-width: 1px;
 }
 QMenuBar::item
@@ -357,7 +363,7 @@ QPushButton#buttonEnable
 	padding: 0px;
 	margin: 0px;
 	border: 0.15em solid @border@;
-	background-color: white;
+	background-color: @checkboxBackground@;
 	width: 4em;	/* 4.57 / 64px at 96dpi */
 	height: 4em;	/* 5 / 70px at 96dpi */
 	/*background-color: transparent;
