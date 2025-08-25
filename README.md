@@ -1,11 +1,18 @@
-# Light theme for Lazy Nezumi
+# Semi-light theme for Lazy Nezumi
 
-It's not perfect, but it gets the job done, you know?
+This one is slightly darker and has a color tint to it.
 
-![](./screenshot.png)
+![](./screenshot-blue.png)
+![](./screenshot-yellow.png)
 
-The on/off button is a checkbox because I could not accurately re-create the Cool Button in
-light colors.
+Edit the `@hue@` in `mainStyle.qss` to your liking.
+
+If you want multiple of these, rename the directory
+and either edit the `@themeImages@` in `mainStyle.qss`
+or keep the regular theme installed alongside.
+
+Haven't found what the selector for the "licensed to" label is supposed to be,
+should you be wondering.
 
 ## Installing
 

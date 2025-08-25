@@ -5,45 +5,47 @@
 @images@ = :/images/Classic
 @themeImages@ = ~/themes/WindowsLight
 
+// @hue@ is on the bottom of this block because the whole thing folds otherwise..?
+
 // Background colors
-@background@ = #F0F0F0
+@background@ = hsv(@hue@, 40, 210)
 @backgroundAlt@ = @backgroundFrame@
-@backgroundFrame@ = #F7F7F7
+@backgroundFrame@ = hsv(@hue@, 35, 220)
 
 // Borders
-@borderDisabled@ = #BFBFBF
+@borderDisabled@ = hsv(@hue@, 40, 190)
 @borderLight@ = @border@
 @borderLighter@ = @border@
-@border@ = #ADADAD
+@border@ = hsv(@hue@, 40, 170)
 
 // Text
 @text@ = black
 @textDark@ = #555
 @textSelected@ = white
-@textDisabled@ = #aaa
+@textDisabled@ = hsv(@hue@, 40, 80)
 
 // Button/combo/menu gradients
-@buttonGradient@ = #E1E1E1
+@buttonGradient@ = @accent_230@
 @buttonGradientChecked@ = white
-@buttonGradientPressed@ = #CCE8FF
-@buttonHueSat@ = 206,40
+@buttonGradientPressed@ = @accent_220@
+@buttonHueSat@ = @hue@,40
 
-@enableHoverBorder@ = #0078D7
-@enableHoverBackground@ = #E5F1FB
-@enablePressedBorder@ = #005499
-@enablePressedBackground@ = #CCE4F7
+@enableHoverBorder@ = @highlightBorder@
+@enableHoverBackground@ = @accent_240@
+@enablePressedBorder@ = hsv(@hue@, 30, 80)
+@enablePressedBackground@ = @accent_220@
 
-@comboBox@ = #E1E1E1
+@comboBox@ = hsv(@hue@, 20, 240)
 @comboBoxItemsBackground@ = white
-@textField@ = white
+@textField@ = hsv(@hue@, 20, 240)
 
 @sliderBackground@ = #E7EAEA
 @sliderBorder@ = #D6D6D6
 
-@scrollbarBackground@ = #F0F0F0
-@scrollbarHandle@ = #CDCDCD
+@scrollbarBackground@ = hsv(@hue@, 40, 210)
+@scrollbarHandle@ = hsv(@hue@, 40, 170)
 
-@menuBarBackground@ = #f9f9f9
+@menuBarBackground@ = @accent_240@
 @menuBarSelectedBackground@ = #E5F3FF
 @menuBarSelectedBorder@ = #CCE8FF
 @menuBarPressedBackground@ = #CCE8FF
@@ -52,28 +54,41 @@
 
 @menuBorder@ = #CCCCCC
 @menuSeparator@ = #D7D7D7
-@menuBackground@ = #F0F0F0
+@menuBackground@ = @accent_240@
 @menuSelectedColor@ = black
 @menuSelectedBackground@ = #91C9F7
 
-@statusBarBorder@ = #ADADAD
-@statusBarBackground@ = #F0F0F0
+@statusBarBorder@ = hsv(@hue@, 40, 170)
+@statusBarBackground@ = hsv(@hue@, 40, 210)
 
-@checkboxBackground@ = white
+@checkboxBackground@ = @accent_240@
+
+@tooltipBackground@ = @accent_240@
+@tooltipColor@ = black
+@tooltipBorder@ = black
 
 // Highlight color
 @highlightGradient@ = @highlightColor@
-@highlightColor@ = #0078D7
-@highlightCheckboxBorder@ = #0179D7
+@highlightColor@ = @select@
+@highlightCheckboxBorder@ = @select@
 @highlight@ = hsv(@highlightHueSat@, 255)
 @highlightDark@ = hsv(@highlightHueSat@, 208)
+@highlightBorder@ = @highlightDarker@
 @highlightDarker@ = hsv(@highlightHueSat@, 153)
-@highlightHueSat@ = 206,255
-@select@ = #007AD9
+@highlightHueSat@ = @hue@,255
+@select@ = hsv(@hue@, 255, 215)
 
-@tooltipBackground@ = white
-@tooltipColor@ = black
-@tooltipBorder@ = black
+@accent_220@ = hsv(@hue@, 35, 220)
+@accent_230@ = hsv(@hue@, 18, 230)
+@accent_240@ = hsv(@hue@, 30, 240)
+
+// some example colors (0-360 range):
+// yellowish: 45
+// minty: 149
+// blue: 207
+// purple: 272
+// pink: 335
+@hue@ = 207
 
 </variables>
 
@@ -413,9 +428,9 @@ QPushButton:pressed
 	padding-top: 0.7em;
 	padding-bottom: 0.5em;
 }
-QToolButton:hover,QComboBox:hover,QComboBox#comboBoxPresets:hover,QPushButton:hover,QLineEdit:hover,QSpinBox:hover,QDoubleSpinBox:hover,QPrecisionSlider::handle:horizontal:hover,QPlainTextEdit:hover
+QToolButton:hover,QComboBox:hover,QComboBox#comboBoxPresets:hover,QPushButton:hover,QLineEdit:hover,QSpinBox:hover,QDoubleSpinBox:hover,QPlainTextEdit:hover
 {
-	border: 1px solid @highlight@;
+	border: 1px solid @highlightBorder@;
 }
 QComboBox#comboBoxPresets
 {
@@ -758,7 +773,7 @@ QCheckBox:disabled
 }
 QRadioButton::indicator:hover, QCheckBox::indicator:hover, QGroupBox::indicator:hover
 {
-	border: 1px solid @highlight@;
+	border: 1px solid @highlightBorder@;
 	width: 0.75em;
 	height: 0.75em;
 }
@@ -852,7 +867,7 @@ QPrecisionSlider::groove:horizontal
 }
 QPrecisionSlider::sub-page:horizontal
 {
-	background: QLinearGradient(x1:0, y1:0.2, x2:0, y2:0.8, stop: 1 @highlight@, stop: 0 @highlightDarker@);
+	background: @highlight@;
 	border: 1px solid @borderLighter@;
 	height: 0.3em;
 	border-radius: 0px;
@@ -880,16 +895,15 @@ QPrecisionSlider::add-page:horizontal:disabled
 }
 QPrecisionSlider::handle:horizontal
 {
-	background-color: @select@;
-	border-width: 0px;
+	background-color: @highlight@;
+	border-width: 1px;
 	border-style: solid;
-	border-color: black;
-	border-top-color: white;
-	border-left-color: white;
+	border-color: #333;
     border-radius: 0em;
 	width: 0.9em;
-	margin-top:-0.6em;
-	margin-bottom:-0.6em;
+	margin-top:-0.4em;
+	margin-bottom:-0.4em;
+	border-radius: 0.5em;
 }
 QPrecisionSlider::handle:horizontal:disabled
 {
@@ -903,6 +917,9 @@ QPrecisionSlider::handle:horizontal:disabled
 	width: 0.9em;
 	margin-top:-0.6em;
 	margin-bottom:-0.6em;
+}
+QPrecisionSlider::handle:horizontal:hover {
+	border-color: @highlightBorder@;
 }
 QGroupBox
 {
