@@ -7,6 +7,9 @@ It's not perfect, but it gets the job done, you know?
 The on/off button is a checkbox because I could not accurately re-create the Cool Button in
 light colors.
 
+If you'd like something slightly darker and/or with more color, have a look at the
+["tinted"](https://github.com/YellowAfterlife/lazy-nezumi-light/tree/tinted) branch.
+
 ## Installing
 
 1.	Download this repository.\
