@@ -7,14 +7,14 @@
 
 // Background colors
 @background@ = #F0F0F0
-@backgroundAlt@ = #F7F7F7
+@backgroundAlt@ = @backgroundFrame@
 @backgroundFrame@ = #F7F7F7
 
 // Borders
-@border@ = #ADADAD
 @borderDisabled@ = #BFBFBF
-@borderLight@ = #ADADAD
-@borderLighter@ = #ADADAD
+@borderLight@ = @border@
+@borderLighter@ = @border@
+@border@ = #ADADAD
 
 // Text
 @text@ = black
@@ -22,36 +22,25 @@
 @textSelected@ = white
 @textDisabled@ = #aaa
 
-// Highlight color
-@highlightGradient@ = #0078D7
-@highlightColor@ = #0078D7
-@highlightCheckboxBorder@ = #0179D7
-@highlight@ = hsv(@highlightHueSat@, 255)
-@highlightDark@ = hsv(@highlightHueSat@, 208)
-@highlightDarker@ = hsv(@highlightHueSat@, 153)
-@highlightHueSat@ = 206,255
-
 // Button/combo/menu gradients
 @buttonGradient@ = #E1E1E1
 @buttonGradientChecked@ = white
 @buttonGradientPressed@ = #CCE8FF
 @buttonHueSat@ = 206,40
 
-@buttonHoverBorder@ = #0078D7
-@buttonHoverBackground@ = #E5F1FB
-@buttonPressedBorder@ = #005499
-@buttonPressedBackground@ = #CCE4F7
+@enableHoverBorder@ = #0078D7
+@enableHoverBackground@ = #E5F1FB
+@enablePressedBorder@ = #005499
+@enablePressedBackground@ = #CCE4F7
 
 @comboBox@ = #E1E1E1
 @comboBoxItemsBackground@ = white
 @textField@ = white
-@select@ = #007AD9
 
 @sliderBackground@ = #E7EAEA
 @sliderBorder@ = #D6D6D6
 
 @scrollbarBackground@ = #F0F0F0
-@scrollbarForeground@ = #606060
 @scrollbarHandle@ = #CDCDCD
 
 @menuBarBackground@ = #f9f9f9
@@ -71,6 +60,16 @@
 @statusBarBackground@ = #F0F0F0
 
 @checkboxBackground@ = white
+
+// Highlight color
+@highlightGradient@ = @highlightColor@
+@highlightColor@ = #0078D7
+@highlightCheckboxBorder@ = #0179D7
+@highlight@ = hsv(@highlightHueSat@, 255)
+@highlightDark@ = hsv(@highlightHueSat@, 208)
+@highlightDarker@ = hsv(@highlightHueSat@, 153)
+@highlightHueSat@ = 206,255
+@select@ = #007AD9
 
 @tooltipBackground@ = white
 @tooltipColor@ = black
@@ -371,15 +370,15 @@ QPushButton#buttonEnable
 }
 QPushButton#buttonEnable:hover
 {
-	border-color: @buttonHoverBorder@;
-	background-color: @buttonHoverBackground@;
+	border-color: @enableHoverBorder@;
+	background-color: @enableHoverBackground@;
 	/*background-color: transparent;
 	image: url(@themeImages@/power_hover.png);*/
 }
 QPushButton#buttonEnable:pressed
 {
-	border-color: @buttonPressedBorder@;
-	background-color: @buttonPressedBackground@;
+	border-color: @enablePressedBorder@;
+	background-color: @enablePressedBackground@;
 	/*background-color: transparent;
 	image: url(@themeImages@/power_pressed.png);*/
 }
@@ -420,7 +419,7 @@ QToolButton:hover,QComboBox:hover,QComboBox#comboBoxPresets:hover,QPushButton:ho
 }
 QComboBox#comboBoxPresets
 {
-	background-color: @buttonGradient@;
+	/*background-color: @buttonGradient@;*/
 	border: 1px solid @border@;
 	border-radius: 0.2em;
 	padding: 0.3em 0.6em 0.3em 0.8em;
@@ -479,11 +478,10 @@ QComboBox#comboBoxPresets::down-arrow
 }
 QComboBox::down-arrow
 {
-	image: url(@images@/arrow_down.png);
+	image: url(@themeImages@/section_checked.png);
 	width: 0.7em;
 	height: 0.7em;
 	margin-right: 0.3em;
-	padding-top: 0.5em;
 }
 QComboBox::down-arrow:disabled
 {
@@ -796,7 +794,7 @@ QSpinBox:disabled,QDoubleSpinBox:disabled
 }
 QSpinBox::up-button,QDoubleSpinBox::up-button
 {
-	image: url(@images@/arrow_up.png);
+	image: url(@themeImages@/spinbox_up.png);
 	width: 0.5em;
 	height: 0.5em;
 	padding-left: 0.2em;
@@ -805,11 +803,11 @@ QSpinBox::up-button,QDoubleSpinBox::up-button
 }
 QSpinBox::up-button:hover,QDoubleSpinBox::up-button:hover
 {
-	image: url(@themeImages@/arrow_up_hover.png);
+	image: url(@themeImages@/spinbox_up_hover.png);
 }
 QSpinBox::down-button,QDoubleSpinBox::down-button
 {
-	image: url(@images@/arrow_down.png);
+	image: url(@themeImages@/spinbox_down.png);
 	width: 0.5em;
 	height: 0.5em;
 	padding-left: 0.2em;
@@ -818,7 +816,7 @@ QSpinBox::down-button,QDoubleSpinBox::down-button
 }
 QSpinBox::down-button:hover,QDoubleSpinBox::down-button:hover
 {
-	image: url(@themeImages@/arrow_down_hover.png);
+	image: url(@themeImages@/spinbox_down_hover.png);
 }
 QSpinBox::up-button:disabled,QDoubleSpinBox::up-button:disabled,
 QSpinBox::down-button:disabled,QDoubleSpinBox::down-button:disabled
